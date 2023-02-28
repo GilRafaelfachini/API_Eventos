@@ -1,5 +1,6 @@
 package br.com.API_Shows.demo.dto;
 
+import br.com.API_Shows.demo.model.Evento;
 import jakarta.persistence.Column;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -46,4 +47,15 @@ public class EventoDto {
     @Column(nullable = false,unique = true)
     private Integer lotacaoMaxima;
 
+    public EventoDto(Evento evento) {
+        this.nomeDoEvento = evento.getNomeDoEvento();
+        this.nomeDoPatrocinador =evento.getNomeDoPatrocinador();
+        this.dataDoEvento =evento.getDataDoEvento();
+        this.dataDeCriacao =evento.getDataDeCriacao();
+        this.local = evento.getLocal();
+        this.nomeDoArtista =evento.getNomeDoArtista();
+        this.horarioDoInicio =evento.getHorarioDoInicio();
+        this.duracao = evento.getDuracao();
+        this.lotacaoMaxima =evento.getLotacaoMaxima();
+    }
 }

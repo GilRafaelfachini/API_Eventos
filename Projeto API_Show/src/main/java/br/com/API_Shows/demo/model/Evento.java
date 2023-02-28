@@ -15,9 +15,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "eventos")
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
+    @Column(name = "codigo")
     private Long codigo;
     @Size(min = 5, max = 30, message = "Campo deve ter entre 5 e 30 caracteres")
     @Column(nullable = false,unique = true)
@@ -50,18 +52,5 @@ public class Evento {
     @Column(nullable = false,unique = true)
     private Integer lotacaoMaxima;
 
-   /* @AssertTrue(message = "A data do evento não pode ser inferior à data de criação.")
-    public boolean isDataEventoMaiorQueDataCriacao() {
-        return dataDoEvento == null || dataDeCriacao == null || !dataDoEvento.before(dataDeCriacao);
-    }
-    @PreUpdate
-    public void preUpdate () {
-        Evento eventoOriginal = EntityManagerProvider.getEntityManager().find(Evento.class, Long id);
-        if (!eventoOriginal.getNome().equals(nome)) {
-            throw new RuntimeException("Não é possível editar o nome do evento.");
-        }
-        if (!eventoOriginal.getDataCriacao().equals(dataCriacao)) {
-            throw new RuntimeException("Não é possível editar a data de criação do evento.");
-        }
-    }*/
+
 }
